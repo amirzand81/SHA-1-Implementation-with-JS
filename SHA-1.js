@@ -14,19 +14,17 @@ const K1 = hexToBinary('5A827999');
 const K2 = hexToBinary('6ED9EBA1');
 const K3 = hexToBinary('8F1BBCDC');
 const K4 = hexToBinary('CA62C1D6');
-const result = [];
+let A = H0;
+let B = H1;
+let C = H2;
+let D = H3;
+let E = H4;
 
 // check that length part not overflow
 if (lengthPart.length > 64) {
   console.log('This message is too long.');
   return;
 }
-
-let A = H0;
-let B = H1;
-let C = H2;
-let D = H3;
-let E = H4;
 
 for (let i = 0; i < arr.length; i++) {
   block(arr[i]);
@@ -42,13 +40,10 @@ for (let i = 0; i < arr.length; i++) {
   H2 = C;
   H3 = D;
   H4 = E;
-
-  result.push(binaryToHex(A + B + C + D + E));
 }
 
-for (const item of result) {
-  console.log(item);
-}
+const result = binaryToHex(A + B + C + D + E);
+console.log(result);
 
 function block(str) {
   const Wj = calculteWj(str);
