@@ -46,7 +46,9 @@ for (let i = 0; i < arr.length; i++) {
   result.push(binaryToHex(A + B + C + D + E));
 }
 
-console.log(result[0]);
+for (const item of result) {
+  console.log(item);
+}
 
 function block(str) {
   const Wj = calculteWj(str);
